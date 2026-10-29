@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Vibrant Creations | Media, Campaigns & Political Strategy",
-  description: "Premium media production, political campaign strategy, digital PR and narrative engineering from Bhopal and Mumbai.",
+  title: "Ubiquity Neethi | Media, Campaigns & Political Strategy",
+  description: "Media production, political campaign strategy, digital PR and narrative engineering for high-impact public communication.",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 

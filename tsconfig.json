@@ -28,8 +28,7 @@
       ]
     },
     "types": [
-      "node",
-      "@cloudflare/workers-types"
+      "node"
     ]
   },
   "include": [
@@ -49,5 +48,14 @@
     ".sites-runtime",
     "outputs",
     "work"
+    ,"vite.config.ts"
+    ,"worker"
+    ,"scripts"
+    ,"db"
+    ,"drizzle.config.ts"
+    ,"lib/connector-context.ts"
+    ,"lib/connector-contract.mts"
+    ,"lib/connector-errors.mts"
+    ,"lib/connectors.ts"
   ]
 }
