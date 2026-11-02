@@ -11,15 +11,15 @@ const capabilities = [
   { icon: MessageSquareText, title: "Narrative Engineering", text: "Script development, speech writing, campaign messaging and manifestos shaped to move people." },
 ];
 
-type Leader = { name: string; role: string; bio: string; image?: string; initials?: string };
+type Leader = { name: string; role: string; bio: string };
 
 const leaders: Leader[] = [
-  { name: "Anubhav Shukla", role: "Co-Founder", initials: "AS", bio: "Co-founder of Ubiquity Neethi, helping guide the organisation's direction, partnerships and long-term growth." },
-  { name: "Veena Sharma", role: "Co-Founder", initials: "VS", bio: "Co-founder of Ubiquity Neethi, supporting its strategic foundation, values and organisational development." },
-  { name: "Yogendra Sharma", role: "Managing Director", initials: "YS", bio: "A creative director, graphic designer and senior video editor with over 22 years of experience across campaign media, political communication and visual storytelling." },
+  { name: "Anubhav Shukla", role: "Co-Founder", bio: "Co-founder of Ubiquity Neethi, helping guide the organisation's direction, partnerships and long-term growth." },
+  { name: "Veena Sharma", role: "Co-Founder", bio: "Co-founder of Ubiquity Neethi, supporting its strategic foundation, values and organisational development." },
+  { name: "Yogendra Sharma", role: "Managing Director", bio: "A creative director, graphic designer and senior video editor with over 22 years of experience across campaign media, political communication and visual storytelling." },
 ];
 
-const glimpseImages = Array.from({ length: 28 }, (_, index) => `/images/glimpses/glimpse-${String(index + 1).padStart(2, "0")}.webp`);
+const glimpseImages = Array.from({ length: 28 }, (_, index) => index + 1).filter((number) => number !== 11).map((number) => `/images/glimpses/glimpse-${String(number).padStart(2, "0")}.webp`);
 
 const fieldTeam = [
   { name: "Shilpa Panja", role: "Operations Associate", image: "/images/shilpa-panja.jpg", text: "Former I-PAC associate with experience across Tripura and West Bengal campaign teams." },
@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Ubiquity Neethi home"><Image className="brand-logo" src="/images/ubiquity-neethi-logo.jpeg" width={360} height={150} alt="Ubiquity Neethi" priority /></a>
+        <a className="brand" href="#top" aria-label="Ubiquity Neethi home"><Image className="brand-logo" src="/images/ubiquity-neethi-logo-cropped.png" width={2048} height={768} alt="Ubiquity Neethi" priority /></a>
         <nav className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation">
           <a href="#about" onClick={() => setMenuOpen(false)}>About</a><a href="#services" onClick={() => setMenuOpen(false)}>Services</a><a href="#leadership" onClick={() => setMenuOpen(false)}>Leadership</a><a href="#work" onClick={() => setMenuOpen(false)}>Work</a><a className="nav-cta" href="#contact" onClick={() => setMenuOpen(false)}>Start a project</a>
         </nav>
@@ -83,7 +83,7 @@ export default function Home() {
 
       <section className="section leadership" id="leadership">
         <div className="section-heading"><div><div className="section-label">03 · Leadership</div><h2>Strategic minds. Production discipline.</h2></div><p>Leadership shaped by organisational vision, media craft and high-stakes campaign execution.</p></div>
-        <div className="leader-grid leader-grid-three">{leaders.map((leader) => <article className="leader-card" key={leader.name}><div className={leader.image ? "leader-photo" : "leader-photo leader-initials"}>{leader.image ? <Image src={leader.image} fill sizes="(max-width: 800px) 100vw, 32vw" alt={leader.name} /> : <span>{leader.initials}</span>}</div><div className="leader-content"><p>{leader.role}</p><h3>{leader.name}</h3><span>{leader.bio}</span></div></article>)}</div>
+        <div className="leader-grid leader-grid-three">{leaders.map((leader) => <article className="leader-card" key={leader.name}><div className="leader-photo leader-initials" aria-hidden="true" /><div className="leader-content"><p>{leader.role}</p><h3>{leader.name}</h3><span>{leader.bio}</span></div></article>)}</div>
         <div className="team-grid">{fieldTeam.map((person) => <article className="team-card" key={person.name}><Image src={person.image} width={110} height={110} alt={person.name} /><div><p>{person.role}</p><h3>{person.name}</h3><span>{person.text}</span></div></article>)}</div>
       </section>
 
@@ -100,11 +100,11 @@ export default function Home() {
       <section className="section why-us"><div className="section-label">06 · Why Ubiquity Neethi</div><h2>Clear insight. Strong creative. Ground-ready execution.</h2><div className="why-grid"><article><Users /><h3>Single-window team</h3><p>Research, messaging, production, digital delivery and on-ground execution under one accountable partner.</p></article><article><BarChart3 /><h3>Data becomes narrative</h3><p>We translate sentiment and demographic inputs into communications people can understand and remember.</p></article><article><Target /><h3>Built for the ground</h3><p>Campaign thinking informed by real field operations across highly competitive regional portfolios.</p></article></div></section>
 
       <section className="contact" id="contact">
-        <div className="contact-copy"><div className="section-label">Start a conversation</div><h2>Have a campaign, film or story that needs momentum?</h2><p>Tell us what you are building. We will help shape the strategy, production plan and next move.</p><address><strong>M/s Bapan Advertisers</strong><span>Main Road Mahavir Chowk, Near Singari Jodiya,</span><span>Chas, Bokaro, Jharkhand - 827013</span></address></div>
+        <div className="contact-copy"><div className="section-label">Start a conversation</div><h2>Have a campaign, film or story that needs momentum?</h2><p>Tell us what you are building. We will help shape the strategy, production plan and next move.</p><address><strong>M/s Bapan Advertisers</strong><span>Main Road Mahavir Chowk, Near Singari Jodiya,</span><span>Chas, Bokaro, Jharkhand - 827013</span><a href="tel:+916203879397">Contact number - 6203879397</a></address></div>
         <form className="contact-form" onSubmit={submitEnquiry}><label>Name<input name="name" required placeholder="Your name" /></label><label>Email<input name="email" type="email" required placeholder="you@example.com" /></label><label>Phone<input name="phone" type="tel" placeholder="Your contact number" /></label><label>What can we help with?<textarea name="message" required rows={4} placeholder="Tell us about your project or campaign" /></label><button className="button button-primary" type="submit">Send enquiry <ArrowRight size={18} /></button>{sent && <p className="form-success" role="status">Thank you. Form delivery will be enabled when contact details are added.</p>}</form>
       </section>
 
-      <footer><a className="brand footer-brand" href="#top"><Image className="brand-logo" src="/images/ubiquity-neethi-logo.jpeg" width={360} height={150} alt="Ubiquity Neethi" /></a><span>© {new Date().getFullYear()} Ubiquity Neethi.</span></footer>
+      <footer><a className="brand footer-brand" href="#top"><Image className="brand-logo" src="/images/ubiquity-neethi-logo-cropped.png" width={2048} height={768} alt="Ubiquity Neethi" /></a><span>© {new Date().getFullYear()} Ubiquity Neethi.</span></footer>
     </main>
   );
 }
