@@ -19,7 +19,7 @@ const leaders: Leader[] = [
   { name: "Yogendra N Sharma", role: "Managing Director", bio: "A creative director, graphic designer and senior video editor with over 22 years of experience across campaign media, political communication and visual storytelling." },
 ];
 
-const glimpseImages = Array.from({ length: 28 }, (_, index) => index + 1).filter((number) => ![7, 11].includes(number)).map((number) => `/images/glimpses/glimpse-${String(number).padStart(2, "0")}.webp`);
+const glimpseImages = Array.from({ length: 28 }, (_, index) => index + 1).filter((number) => ![7, 10, 11].includes(number)).map((number) => `/images/glimpses/glimpse-${String(number).padStart(2, "0")}.webp`);
 
 const instagramReels = [
   "https://www.instagram.com/reel/DWpoxxGDafY/?rpxt=NThmeHFmczI5YWFn",
@@ -112,7 +112,7 @@ export default function Home() {
       <section className="section why-us"><div className="section-label">06 · Why Ubiquity Neethi</div><h2>Clear insight. Strong creative. Ground-ready execution.</h2><div className="why-grid"><article><Users /><h3>Single-window team</h3><p>Research, messaging, production, digital delivery and on-ground execution under one accountable partner.</p></article><article><BarChart3 /><h3>Data becomes narrative</h3><p>We translate sentiment and demographic inputs into communications people can understand and remember.</p></article><article><Target /><h3>Built for the ground</h3><p>Campaign thinking informed by real field operations across highly competitive regional portfolios.</p></article></div></section>
 
       <section className="contact" id="contact">
-        <div className="contact-copy"><div className="section-label">Start a conversation</div><h2>Have a campaign, film or story that needs momentum?</h2><p>Tell us what you are building. We will help shape the strategy, production plan and next move.</p><address><strong>M/s Bapan Advertisers</strong><span>Main Road Mahavir Chowk, Near Singari Jodiya,</span><span>Chas, Bokaro, Jharkhand - 827013</span><a href="tel:+916203879397">Contact number - 6203879397</a></address></div>
+        <div className="contact-copy"><div className="section-label">Start a conversation</div><h2>Have a campaign, film or story that needs momentum?</h2><p>Tell us what you are building. We will help shape the strategy, production plan and next move.</p><address><strong>M/s Bapan Advertisers</strong><span>Main Road Mahavir Chowk, Near Singari Jodiya,</span><span>Chas, Bokaro, Jharkhand - 827013</span><a href="tel:+916203879397">Contact number - +91 6203879397</a></address></div>
         <form className="contact-form" onSubmit={submitEnquiry}><label>Name<input name="name" required placeholder="Your name" /></label><label>Email<input name="email" type="email" required placeholder="you@example.com" /></label><label>Phone<input name="phone" type="tel" placeholder="Your contact number" /></label><label>What can we help with?<textarea name="message" required rows={4} placeholder="Tell us about your project or campaign" /></label><button className="button button-primary" type="submit">Send enquiry <ArrowRight size={18} /></button>{sent && <p className="form-success" role="status">Thank you. Form delivery will be enabled when contact details are added.</p>}</form>
       </section>
 
