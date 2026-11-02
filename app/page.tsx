@@ -16,10 +16,21 @@ type Leader = { name: string; role: string; bio: string };
 const leaders: Leader[] = [
   { name: "Anubhav Shukla", role: "Co-Founder", bio: "Co-founder of Ubiquity Neethi, helping guide the organisation's direction, partnerships and long-term growth." },
   { name: "Veena Sharma", role: "Co-Founder", bio: "Co-founder of Ubiquity Neethi, supporting its strategic foundation, values and organisational development." },
-  { name: "Yogendra Sharma", role: "Managing Director", bio: "A creative director, graphic designer and senior video editor with over 22 years of experience across campaign media, political communication and visual storytelling." },
+  { name: "Yogendra N Sharma", role: "Managing Director", bio: "A creative director, graphic designer and senior video editor with over 22 years of experience across campaign media, political communication and visual storytelling." },
 ];
 
-const glimpseImages = Array.from({ length: 28 }, (_, index) => index + 1).filter((number) => number !== 11).map((number) => `/images/glimpses/glimpse-${String(number).padStart(2, "0")}.webp`);
+const glimpseImages = Array.from({ length: 28 }, (_, index) => index + 1).filter((number) => ![7, 11].includes(number)).map((number) => `/images/glimpses/glimpse-${String(number).padStart(2, "0")}.webp`);
+
+const instagramReels = [
+  "https://www.instagram.com/reel/DWpoxxGDafY/?rpxt=NThmeHFmczI5YWFn",
+  "https://www.instagram.com/reel/DbbOa31jwiD/?vrfl=OHFsMHVzcnNpc3Jj",
+  "https://www.instagram.com/reel/DS0QBv6CNth/?srtk=OGQwcmlqYW9kcGYy",
+  "https://www.instagram.com/reel/DQTJ2dPiHfE/?mdxt=MWRpMDYyOXAxeWx2aw==",
+  "https://www.instagram.com/reel/DB8RgKiJe4t/?xtok=MWo1YTUwZXJmYTFpZg==",
+  "https://www.instagram.com/reel/DB3MpjLKUbr/?rpxt=c2k0dWY4ODk1NXM2",
+  "https://www.instagram.com/reel/DBz8xHGC6Yk/?vrfl=MTB5bjZmOW4xb2d4Yw==",
+  "https://www.instagram.com/reel/DBl6yyvCAc4/?psln=MWpmaTVmY2RnMGJ0Mw==",
+];
 
 const fieldTeam = [
   { name: "Shilpa Panja", role: "Operations Associate", image: "/images/shilpa-panja.jpg", text: "Former I-PAC associate with experience across Tripura and West Bengal campaign teams." },
@@ -83,7 +94,7 @@ export default function Home() {
 
       <section className="section leadership" id="leadership">
         <div className="section-heading"><div><div className="section-label">03 · Leadership</div><h2>Strategic minds. Production discipline.</h2></div><p>Leadership shaped by organisational vision, media craft and high-stakes campaign execution.</p></div>
-        <div className="leader-grid leader-grid-three">{leaders.map((leader) => <article className="leader-card" key={leader.name}><div className="leader-photo leader-initials" aria-hidden="true" /><div className="leader-content"><p>{leader.role}</p><h3>{leader.name}</h3><span>{leader.bio}</span></div></article>)}</div>
+        <div className="leader-grid leader-grid-three">{leaders.map((leader) => <article className="leader-card" key={leader.name}><div className="leader-photo leader-initials" aria-hidden="true" /><div className="leader-content"><h3>{leader.name}</h3><p className="leader-role">{leader.role}</p><span>{leader.bio}</span></div></article>)}</div>
         <div className="team-grid">{fieldTeam.map((person) => <article className="team-card" key={person.name}><Image src={person.image} width={110} height={110} alt={person.name} /><div><p>{person.role}</p><h3>{person.name}</h3><span>{person.text}</span></div></article>)}</div>
       </section>
 
@@ -95,6 +106,7 @@ export default function Home() {
       <section className="section glimpses" id="glimpses">
         <div className="section-heading"><div><div className="section-label">05 · Glimpses</div><h2>People, programmes and moments from the field.</h2></div><p>A selection of public programmes, community engagement, cultural events and campaign activity captured across our work.</p></div>
         <div className="glimpses-grid">{glimpseImages.map((src, index) => <figure className="glimpse-card" key={src}><Image src={src} fill sizes="(max-width: 760px) 50vw, 25vw" alt={`Ubiquity Neethi work glimpse ${index + 1}`} /></figure>)}</div>
+        <div className="reels"><div className="reels-heading"><Clapperboard size={22} /><div><span>Instagram reels</span><strong>Watch more from the field</strong></div></div><div className="reels-grid">{instagramReels.map((url, index) => <a href={url} target="_blank" rel="noreferrer" key={url}><span>{String(index + 1).padStart(2, "0")}</span>Watch reel <ArrowRight size={17} /></a>)}</div></div>
       </section>
 
       <section className="section why-us"><div className="section-label">06 · Why Ubiquity Neethi</div><h2>Clear insight. Strong creative. Ground-ready execution.</h2><div className="why-grid"><article><Users /><h3>Single-window team</h3><p>Research, messaging, production, digital delivery and on-ground execution under one accountable partner.</p></article><article><BarChart3 /><h3>Data becomes narrative</h3><p>We translate sentiment and demographic inputs into communications people can understand and remember.</p></article><article><Target /><h3>Built for the ground</h3><p>Campaign thinking informed by real field operations across highly competitive regional portfolios.</p></article></div></section>
