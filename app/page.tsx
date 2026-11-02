@@ -14,10 +14,12 @@ const capabilities = [
 type Leader = { name: string; role: string; bio: string; image?: string; initials?: string };
 
 const leaders: Leader[] = [
-  { name: "Abhinav Shukla", role: "Co-Founder", initials: "AS", bio: "Co-founder of Ubiquity Neethi, helping guide the organisation's direction, partnerships and long-term growth." },
+  { name: "Anubhav Shukla", role: "Co-Founder", initials: "AS", bio: "Co-founder of Ubiquity Neethi, helping guide the organisation's direction, partnerships and long-term growth." },
   { name: "Veena Sharma", role: "Co-Founder", initials: "VS", bio: "Co-founder of Ubiquity Neethi, supporting its strategic foundation, values and organisational development." },
-  { name: "Yogendra Sharma", role: "Managing Director", image: "/images/yogendra-sharma.jpg", bio: "A creative director, graphic designer and senior video editor with over 22 years of experience across campaign media, political communication and visual storytelling." },
+  { name: "Yogendra Sharma", role: "Managing Director", initials: "YS", bio: "A creative director, graphic designer and senior video editor with over 22 years of experience across campaign media, political communication and visual storytelling." },
 ];
+
+const glimpseImages = Array.from({ length: 28 }, (_, index) => `/images/glimpses/glimpse-${String(index + 1).padStart(2, "0")}.webp`);
 
 const fieldTeam = [
   { name: "Shilpa Panja", role: "Operations Associate", image: "/images/shilpa-panja.jpg", text: "Former I-PAC associate with experience across Tripura and West Bengal campaign teams." },
@@ -38,7 +40,7 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Ubiquity Neethi home"><span className="brand-mark">UN</span><span className="brand-name">Ubiquity Neethi</span></a>
+        <a className="brand" href="#top" aria-label="Ubiquity Neethi home"><Image className="brand-logo" src="/images/ubiquity-neethi-logo.jpeg" width={360} height={150} alt="Ubiquity Neethi" priority /></a>
         <nav className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation">
           <a href="#about" onClick={() => setMenuOpen(false)}>About</a><a href="#services" onClick={() => setMenuOpen(false)}>Services</a><a href="#leadership" onClick={() => setMenuOpen(false)}>Leadership</a><a href="#work" onClick={() => setMenuOpen(false)}>Work</a><a className="nav-cta" href="#contact" onClick={() => setMenuOpen(false)}>Start a project</a>
         </nav>
@@ -90,14 +92,19 @@ export default function Home() {
         <div className="work-copy"><div className="section-label">04 · Featured track record</div><h2>Campaign work grounded in culture and constituency.</h2><div className="work-list"><div><strong>Social-development communication</strong><p>Creative direction and media asset production for major public-awareness initiatives.</p></div><div><strong>West Bengal campaign operations</strong><p>Grassroots management, targeted digital drives and voter sentiment mapping across five assembly segments.</p></div><div><strong>Maharashtra political portfolios</strong><p>Image building, digital PR, event management and crisis communication for political candidates.</p></div></div><a className="text-link" href="#contact">Discuss a similar mandate <ArrowRight size={18} /></a></div>
       </section>
 
-      <section className="section why-us"><div className="section-label">05 · Why Ubiquity Neethi</div><h2>Clear insight. Strong creative. Ground-ready execution.</h2><div className="why-grid"><article><Users /><h3>Single-window team</h3><p>Research, messaging, production, digital delivery and on-ground execution under one accountable partner.</p></article><article><BarChart3 /><h3>Data becomes narrative</h3><p>We translate sentiment and demographic inputs into communications people can understand and remember.</p></article><article><Target /><h3>Built for the ground</h3><p>Campaign thinking informed by real field operations across highly competitive regional portfolios.</p></article></div></section>
+      <section className="section glimpses" id="glimpses">
+        <div className="section-heading"><div><div className="section-label">05 · Glimpses</div><h2>People, programmes and moments from the field.</h2></div><p>A selection of public programmes, community engagement, cultural events and campaign activity captured across our work.</p></div>
+        <div className="glimpses-grid">{glimpseImages.map((src, index) => <figure className="glimpse-card" key={src}><Image src={src} fill sizes="(max-width: 760px) 50vw, 25vw" alt={`Ubiquity Neethi work glimpse ${index + 1}`} /></figure>)}</div>
+      </section>
+
+      <section className="section why-us"><div className="section-label">06 · Why Ubiquity Neethi</div><h2>Clear insight. Strong creative. Ground-ready execution.</h2><div className="why-grid"><article><Users /><h3>Single-window team</h3><p>Research, messaging, production, digital delivery and on-ground execution under one accountable partner.</p></article><article><BarChart3 /><h3>Data becomes narrative</h3><p>We translate sentiment and demographic inputs into communications people can understand and remember.</p></article><article><Target /><h3>Built for the ground</h3><p>Campaign thinking informed by real field operations across highly competitive regional portfolios.</p></article></div></section>
 
       <section className="contact" id="contact">
-        <div className="contact-copy"><div className="section-label">Start a conversation</div><h2>Have a campaign, film or story that needs momentum?</h2><p>Tell us what you are building. We will help shape the strategy, production plan and next move.</p></div>
+        <div className="contact-copy"><div className="section-label">Start a conversation</div><h2>Have a campaign, film or story that needs momentum?</h2><p>Tell us what you are building. We will help shape the strategy, production plan and next move.</p><address><strong>M/s Bapan Advertisers</strong><span>Main Road Mahavir Chowk, Near Singari Jodiya,</span><span>Chas, Bokaro, Jharkhand - 827013</span></address></div>
         <form className="contact-form" onSubmit={submitEnquiry}><label>Name<input name="name" required placeholder="Your name" /></label><label>Email<input name="email" type="email" required placeholder="you@example.com" /></label><label>Phone<input name="phone" type="tel" placeholder="Your contact number" /></label><label>What can we help with?<textarea name="message" required rows={4} placeholder="Tell us about your project or campaign" /></label><button className="button button-primary" type="submit">Send enquiry <ArrowRight size={18} /></button>{sent && <p className="form-success" role="status">Thank you. Form delivery will be enabled when contact details are added.</p>}</form>
       </section>
 
-      <footer><a className="brand footer-brand" href="#top"><span className="brand-mark">UN</span><span className="brand-name">Ubiquity Neethi</span></a><span>© {new Date().getFullYear()} Ubiquity Neethi.</span></footer>
+      <footer><a className="brand footer-brand" href="#top"><Image className="brand-logo" src="/images/ubiquity-neethi-logo.jpeg" width={360} height={150} alt="Ubiquity Neethi" /></a><span>© {new Date().getFullYear()} Ubiquity Neethi.</span></footer>
     </main>
   );
 }
